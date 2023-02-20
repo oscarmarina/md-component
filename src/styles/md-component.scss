@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  background-color: var(--_container-color);
+  color: var(--_on-container-color);
+}
+
+:host(:hover) {
+  // opacity: var(--_selected-focus-state-layer-opacity);
+}
+
+:host([hidden]),
+[hidden] {
+  display: none !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}

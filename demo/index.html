@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Demo - md-component</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="description" content="md-component" />
+    <style>
+      [ambient="secondary"] .pepe {
+        --tabs-container-color-ambient: var(--sys-color-primary, var(--primary40, #3720a3));
+      }
+
+      .pepe {
+        --tabs-container-color : var(--sys-color-primary, var(--primary40, #6750a4));
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body ambient="secondary">
+    <script type="module">
+      import { html, render } from 'lit';
+      // eslint-disable-next-line import/no-extraneous-dependencies
+      import { setDocumentStyles } from '@blockquote-web-components/blockquote-base-style-helpers';
+      import { tabAmbients } from '../index.js';
+      import '../define/md-component.js';
+
+      Object.values(tabAmbients).map(tabAmbient => setDocumentStyles(tabAmbient));
+      const heading = 'World!';
+      render(
+        html`<md-component
+          @counterchange="${ev => console.log('==>', ev.detail)}"
+          .heading=${heading}
+          >some light-dom</md-component
+        >
+        <hr>
+        <md-component class="pepe"
+          @counterchange="${ev => console.log('==>', ev.detail)}"
+          .heading=${heading}
+          >some light-dom</md-component
+        >`,
+        document.querySelector('body'),
+      );
+    </script>
+  </body>
+</html>
